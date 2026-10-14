@@ -1,1 +1,1 @@
-adIPJnfin
+print("Hello World")
