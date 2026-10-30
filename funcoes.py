@@ -25,8 +25,14 @@ def preenche_frota(frota, nome_navio, linha, coluna, orientacao, tamanho):
     navio = define_posicoes(linha, coluna, orientacao, tamanho)
 
     if nome_navio in frota:
-        frota[nome_navio].append(navio)    # já existe esse tipo → acrescenta mais um navio
+        frota[nome_navio].append(navio)    
     else:
-        frota[nome_navio] = [navio]        # primeira vez → cria a lista com esse navio
+        frota[nome_navio] = [navio]        
 
     return frota
+def faz_jogada(tabuleiro, linha, coluna):
+    if tabuleiro[linha, coluna] == '1':
+        tabuleiro[linha][coluna] == 'X'
+    else:
+        tabuleiro[linha][coluna] = '_'
+    return tabuleiro[linha][coluna]
