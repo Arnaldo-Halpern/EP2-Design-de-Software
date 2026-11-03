@@ -19,6 +19,7 @@ def preenche_frota(frota, nome_navio, linha, coluna, orientacao, tamanho):
     return frota
 
 
+# marca X se acertou um navio e - se acertou a agua
 def faz_jogada(tabuleiro, linha, coluna):
     if tabuleiro[linha][coluna] == 1:
         tabuleiro[linha][coluna] = 'X'
@@ -27,6 +28,7 @@ def faz_jogada(tabuleiro, linha, coluna):
     return tabuleiro
 
 
+# cria o tabuleiro 10x10 e coloca 1 onde tem navio
 def posiciona_frota(frota):
     tabuleiro = [[0] * 10 for i in range(10)]
     for navios in frota.values():
@@ -36,6 +38,7 @@ def posiciona_frota(frota):
     return tabuleiro
 
 
+# conta quantos navios tem todas as posicoes com X
 def afundados(frota, tabuleiro):
     total = 0
     for navios in frota.values():
