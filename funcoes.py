@@ -50,3 +50,27 @@ def afundados(frota, tabuleiro):
             if afundou:
                 total += 1
     return total
+
+# confere se o navio cabe no tabuleiro e nao bate em outro navio
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
+    for l, c in posicoes:
+        if l < 0 or l > 9 or c < 0 or c > 9:
+            return False
+        for navios in frota.values():
+            for navio in navios:
+                if [l, c] in navio:
+                    return False
+    return True
+
+
+# monta o texto com os dois tabuleiros lado a lado
+def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
+    texto = ''
+    texto += '   0  1  2  3  4  5  6  7  8  9         0  1  2  3  4  5  6  7  8  9\n'
+    texto += '___________      ___________\n'
+    for linha in range(len(tabuleiro_jogador)):
+        jogador_info = '  '.join([str(item) for item in tabuleiro_jogador[linha]])
+        oponente_info = '  '.join([info if str(info) in 'X-' else '0' for info in tabuleiro_oponente[linha]])
+        texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
+    return texto
